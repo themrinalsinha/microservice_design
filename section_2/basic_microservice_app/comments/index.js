@@ -34,6 +34,12 @@ app.post('/posts/:id/comments', async (request, response) => {
     response.status(201).send(comments)
 })
 
+app.post("/events", (request, response) => {
+    console.log('Received event', request.body.type)
+    response.send({})
+})
+
+
 app.listen(4001, () => {
     console.log("Running on port 4001")
 })
