@@ -1,6 +1,35 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/node,react
-# Edit at https://www.toptal.com/developers/gitignore?templates=node,react
+# Created by https://www.toptal.com/developers/gitignore/api/node,yarn,expressionengine,code
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,yarn,expressionengine,code
+
+### Code ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+### ExpressionEngine ###
+.DS_Store
+
+# Images
+images/avatars/
+images/captchas/
+images/smileys/
+images/member_photos/
+images/signature_attachments/
+images/pm_attachments/
+
+# For security do not publish the following files
+system/expressionengine/config/database.php
+system/expressionengine/config/config.php
+
+# Caches
+sized/
+thumbs/
+_thumbs/
+*/expressionengine/cache/*
 
 ### Node ###
 # Logs
@@ -111,17 +140,19 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
-### react ###
-.DS_*
-**/*.backup.*
-**/*.back.*
+### yarn ###
+# https://yarnpkg.com/advanced/qa#which-files-should-be-gitignored
 
-node_modules
+# .yarn/unplugged and .yarn/build-state.yml should likely always be ignored since
+# they typically hold machine-specific build artifacts. Ignoring them might however
+# prevent Zero-Installs from working (to prevent this, set enableScripts to false).
+.yarn/unplugged
+.yarn/build-state.yml
 
-*.sublime*
+# .yarn/cache and .pnp.* may be safely ignored, but you'll need to run yarn install
+# to regenerate them between each branch switch.
+# Uncomment the following lines if you're not using Zero-Installs:
+# .yarn/cache
+# .pnp.*
 
-psd
-thumb
-sketch
-
-# End of https://www.toptal.com/developers/gitignore/api/node,react
+# End of https://www.toptal.com/developers/gitignore/api/node,yarn,expressionengine,code
