@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: posts
+spec:
+  containers:
+    - name: posts
+      imagePullPolicy: Never
+      image: miniapp/posts:0.0.1
+
+# NOTE: here we defined a pod and one container that is
+#       going to run inside of it.
+
+# in order to run this:
+# $ kubectl apply -f posts.yaml
+
