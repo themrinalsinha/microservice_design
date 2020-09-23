@@ -1,0 +1,23 @@
+# we'll create a deployment, which will run posts application...
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: posts-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: posts
+  template:
+    metadata:
+      labels:
+        app: posts
+    spec:
+      containers:
+        - name: posts
+          imagePullPolicy: Never
+          image: miniapp/posts:0.0.1
+
+# Now, in order to deploy this deployment
+# use command: $ kubectl apply -f posts-deploy.yaml
