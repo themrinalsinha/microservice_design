@@ -23,13 +23,21 @@ app.post('/posts', async (request, response) => {
 
     // Create event - updating event bus about creation
     // of a new post by the user.
-
+    await axios.post('http://localhost:4005/events', {
+        type: 'PostCreated',
+        data: {
+            id, title
+        }
+    })
 
     response.status(201).send(posts[id])
 })
 
 // Event received - update about receiving an event from the event bus.
-
+app.post("/events", (request, response) => {
+    console.log('Received event', request.body.type)
+    response.send({})
+})
 
 // running the post micro service instance on port 4000
 app.listen(4000, () => {
