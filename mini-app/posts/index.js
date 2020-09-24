@@ -23,7 +23,7 @@ app.post('/posts', async (request, response) => {
 
     // Create event - updating event bus about creation
     // of a new post by the user.
-    await axios.post('http://localhost:4005/events', {
+    await axios.post('http://eventbus-service:4005/events', {
         type: 'PostCreated',
         data: {
             id, title
