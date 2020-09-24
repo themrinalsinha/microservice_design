@@ -23,3 +23,20 @@ spec:
 
 # Now, in order to deploy this deployment
 # use command: $ kubectl apply -f posts-deploy.yaml
+
+# creating cluster ip for our post application to communicate
+# internally with the other cluster ip services like eventbus etc.
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-service-cluster-ip
+spec:
+#   type: ClusterIP
+  selector:
+    app: posts
+  ports:
+  - name: posts
+    protocol: TCP
+    port: 4000
+    targetPort: 4000
