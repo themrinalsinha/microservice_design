@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eventbus-deployment
+  name: comments-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: eventbus
+      app: comments
   template:
     metadata:
       labels:
-        app: eventbus
+        app: comments
     spec:
       containers:
-        - name: eventbus
+        - name: comments
           imagePullPolicy: Never
-          image: miniapp/eventbus
+          image: miniapp/comments
 
 # usually we create separate file for different services,
 # but here we can create a service in the same file...
@@ -23,13 +23,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: eventbus-service
+  name: comments-service
 spec:
 #   type: ClusterIP
   selector:
-    app: eventbus
+    app: comments
   ports:
-  - name: eventbus
+  - name: comments
     protocol: TCP
-    port: 4005
-    targetPort: 4005
+    port: 4001
+    targetPort: 4001

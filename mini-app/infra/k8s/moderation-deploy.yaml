@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eventbus-deployment
+  name: moderation-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: eventbus
+      app: moderation
   template:
     metadata:
       labels:
-        app: eventbus
+        app: moderation
     spec:
       containers:
-        - name: eventbus
+        - name: moderation
           imagePullPolicy: Never
-          image: miniapp/eventbus
+          image: miniapp/moderation
 
 # usually we create separate file for different services,
 # but here we can create a service in the same file...
@@ -23,13 +23,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: eventbus-service
+  name: moderation-service
 spec:
 #   type: ClusterIP
   selector:
-    app: eventbus
+    app: moderation
   ports:
-  - name: eventbus
+  - name: moderation
     protocol: TCP
-    port: 4005
-    targetPort: 4005
+    port: 4003
+    targetPort: 4003
