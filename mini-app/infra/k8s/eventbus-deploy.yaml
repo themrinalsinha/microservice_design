@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eventbus-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eventbus
+  template:
+    metadata:
+      labels:
+        app: eventbus
+    spec:
+      containers:
+        - name: eventbus
+          imagePullPolicy: Never
+          image: miniapp/event-bus
+
+# usually we create separate file for different services,
+# but here we can create a service in the same file...
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eventbus-service
+spec:
+#   type: ClusterIP
+  selector:
+    app: eventbus
+  ports:
+  - name: eventbus
+    protocol: TCP
+    port: 4005
+    targetPort: 4005
