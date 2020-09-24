@@ -41,6 +41,7 @@ app.post("/events", (request, response) => {
 
 // running the post micro service instance on port 4000
 app.listen(4000, () => {
+    console.log("latest")
     console.log("v0.0.2")
     console.log("Listening on port 4000")
 })

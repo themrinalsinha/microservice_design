@@ -18,7 +18,8 @@ spec:
         - name: posts
           imagePullPolicy: Never
           # image: miniapp/posts:0.0.1
-          image: miniapp/posts:0.0.2 # updated from v0.0.1 to v0.0.2
+          # image: miniapp/posts:0.0.2 # updated from v0.0.1 to v0.0.2
+          image: miniapp/posts # by not passing tag i'll make sure it will always pick the latest one
 
 # Now, in order to deploy this deployment
 # use command: $ kubectl apply -f posts-deploy.yaml
